@@ -1,3 +1,4 @@
+export { NumberStepper } from './NumberStepper';
 /**
  * Component exports
  *
