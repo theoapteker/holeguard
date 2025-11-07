@@ -1,3 +1,10 @@
+# HoleGuard (WaterPolo Connect)
+
+A React Native + Expo mobile application for water polo players to find and organize pickup games.
+
+## Overview
+
+HoleGuard helps water polo players connect, find games in their area, and track their performance. Built with React Native, Expo, and Supabase, the app supports user profiles, game creation, participant management, and player statistics tracking.
 # WaterPolo Connect (HoleGuard)
 
 A React Native mobile application that helps water polo players find and organize pickup games in their area.
@@ -324,7 +331,41 @@ Automatically updates game status to 'full' when the number of confirmed partici
 - ✅ **UPDATE**: Game creators can update stats; Players can update their own stats
 - ✅ **DELETE**: Game creators can delete stats
 
-## Setup Instructions
+## Getting Started
+
+### Prerequisites
+- Node.js 16+ and npm/yarn
+- Expo CLI: `npm install -g expo-cli`
+- Supabase account and project
+- iOS Simulator (Mac) or Android Emulator
+
+### Installation
+
+**1. Clone and Install**
+```bash
+git clone <repository-url>
+cd holeguard
+npm install
+```
+
+**2. Environment Setup**
+```bash
+cp .env.example .env
+```
+
+Edit `.env` and add your Supabase credentials:
+```
+EXPO_PUBLIC_SUPABASE_URL=your-project-url.supabase.co
+EXPO_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+```
+
+**3. Run the App**
+```bash
+npm start
+# Then press 'i' for iOS or 'a' for Android
+```
+
+## Supabase Setup
 
 ### 1. Initialize Supabase Project
 
@@ -342,7 +383,15 @@ supabase link --project-ref your-project-ref
 supabase init
 ```
 
-### 2. Run Migrations
+### 2. Create Storage Bucket
+
+Create a storage bucket for avatars in your Supabase project:
+- Bucket name: `avatars`
+- Public: Yes
+
+You can do this via the Supabase Dashboard or SQL. See `src/screens/README.md` for storage policies.
+
+### 3. Run Migrations
 
 ```bash
 # Apply migrations to your Supabase project
@@ -352,7 +401,7 @@ supabase db push
 supabase db reset
 ```
 
-### 3. Generate TypeScript Types (Optional)
+### 4. Generate TypeScript Types (Optional)
 
 The types are already included in `src/types/database.types.ts`, but you can regenerate them:
 
@@ -461,6 +510,20 @@ const { data: stats, error } = await supabase
 
 ### Key Features
 
+### App Features
+- ✅ **Profile Setup Screen** - Complete onboarding flow after signup
+  - Position selection (Goalie, Center, Driver, Wing)
+  - Skill level (Beginner, Intermediate, Advanced, Pro)
+  - Location input
+  - Bio (optional, max 200 chars)
+  - Avatar upload to Supabase Storage
+  - Form validation
+  - Skip option
+- 🚧 Auth screens (coming soon)
+- 🚧 Main app navigation (coming soon)
+- 🚧 Game browsing and creation (coming soon)
+
+### Backend Features
 - ✅ Personal stats dashboard with charts
 - ✅ Competitive leaderboards across multiple categories
 - ✅ User profiles with positions and skill levels
@@ -474,13 +537,29 @@ const { data: stats, error } = await supabase
 - ✅ Automatic timestamp management
 - ✅ Comprehensive TypeScript types
 
+See [src/screens/README.md](src/screens/README.md) for detailed ProfileSetupScreen documentation.
+
 ## File Structure
 
 ```
 holeguard/
+├── src/
+│   ├── lib/
+│   │   └── supabase.ts              # Supabase client configuration
+│   ├── screens/
+│   │   ├── ProfileSetupScreen.tsx   # Profile setup after signup
+│   │   └── README.md                # Screen documentation
+│   ├── theme/
+│   │   └── colors.ts                # App color palette
+│   └── types/
+│       └── database.types.ts        # TypeScript database types
 ├── supabase/
 │   └── migrations/
 │       └── 20250107000000_initial_schema.sql
+├── App.tsx                          # Main app entry point
+├── app.json                         # Expo configuration
+├── package.json                     # Dependencies
+├── .env.example                     # Environment variables template
 ├── src/
 │   ├── screens/
 │   │   └── GameDetailScreen.tsx

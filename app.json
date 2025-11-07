@@ -1,5 +1,6 @@
 {
   "expo": {
+    "name": "HoleGuard",
     "name": "WaterPolo Connect",
     "slug": "holeguard",
     "version": "1.0.0",
@@ -11,6 +12,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.holeguard.app"
     "assetBundlePatterns": [
       "**/*"
     ],
@@ -21,6 +25,20 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "package": "com.holeguard.app"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you set your profile picture."
+        }
+      ]
+    ]
       }
     },
     "web": {
