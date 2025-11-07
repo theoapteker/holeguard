@@ -1,0 +1,58 @@
+{
+  "expo": {
+    "name": "WaterPolo Connect",
+    "slug": "waterpolo-connect",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0066CC"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.waterpoloconnect.app",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "WaterPolo Connect needs access to your location to find nearby pools and events.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "WaterPolo Connect needs access to your location to find nearby pools and events."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0066CC"
+      },
+      "package": "com.waterpoloconnect.app",
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION"
+      ],
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false,
+      "config": {
+        "googleMaps": {
+          "apiKey": "YOUR_GOOGLE_MAPS_API_KEY"
+        }
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow WaterPolo Connect to use your location to find nearby pools and events."
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "your-project-id"
+      }
+    }
+  }
+}
