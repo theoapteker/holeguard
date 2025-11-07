@@ -1,0 +1,53 @@
+{
+  "expo": {
+    "name": "WaterPolo Connect",
+    "slug": "waterpolo-connect",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.yourcompany.waterpoloconnect",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "WaterPolo Connect needs your location to help you find nearby pickup games and automatically fill in game location details.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "WaterPolo Connect needs your location to help you find nearby pickup games and automatically fill in game location details."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.yourcompany.waterpoloconnect",
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow WaterPolo Connect to use your location to help you find nearby pickup games and set game locations."
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "your-eas-project-id"
+      }
+    }
+  }
+}
