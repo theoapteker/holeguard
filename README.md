@@ -1,10 +1,193 @@
-# WaterPolo Connect - Database Schema
+# HoleGuard (WaterPolo Connect)
 
-This repository contains the Supabase database schema for the WaterPolo Connect application.
+A React Native + Expo mobile application for water polo players to find and organize pickup games.
 
 ## Overview
 
-WaterPolo Connect is a platform that helps water polo players find and organize pickup games in their area. The database schema supports user profiles, game creation, participant management, and player statistics tracking.
+HoleGuard helps water polo players connect, find games in their area, and track their performance. Built with React Native, Expo, and Supabase, the app supports user profiles, game creation, participant management, and player statistics tracking.
+# WaterPolo Connect (HoleGuard)
+
+A React Native mobile application that helps water polo players find and organize pickup games in their area.
+
+## Overview
+
+WaterPolo Connect is a platform that helps water polo players find and organize pickup games in their area. The application includes:
+
+- **Mobile App** - React Native frontend for iOS and Android
+- **Backend** - Supabase database with real-time capabilities
+- **Features** - User profiles, game creation, participant management, and player statistics tracking
+# WaterPolo Connect
+
+A React Native mobile application that helps water polo players find and organize pickup games in their area, track personal statistics, and compete on leaderboards.
+
+## Overview
+
+WaterPolo Connect includes:
+- **Database Schema**: Supabase-powered backend with user profiles, game management, and statistics tracking
+- **Stats Dashboard**: Personal performance tracking with charts and analytics
+- **Leaderboard**: Competitive rankings across multiple categories
+- **Game Management**: Create and join pickup games with automatic capacity management
+
+## Features
+
+### Stats Dashboard (`/src/screens/StatsScreen.tsx`)
+
+Personal performance tracking screen with:
+
+1. **Summary Cards** (2x2 grid):
+   - Total Games Played
+   - Total Goals Scored
+   - Total Assists
+   - Total Blocks
+
+2. **Performance Chart**:
+   - Line chart showing goals per game over time
+   - Interactive visualization using react-native-chart-kit
+   - Customizable date ranges
+
+3. **Position Breakdown**:
+   - Pie chart showing games played by position
+   - Visual representation of player versatility
+
+4. **Recent Performance**:
+   - Last 10 games with detailed statistics
+   - Expandable cards showing full game details
+   - Goals, assists, blocks, and steals per game
+
+5. **Leaderboard Preview**:
+   - "Top Scorers This Month" section
+   - Top 5 players displayed
+   - Quick navigation to full leaderboard
+
+6. **Additional Features**:
+   - Date range filters (Last Week, Month, Year, All Time)
+   - Pull-to-refresh functionality
+   - Real-time data from Supabase
+
+### Leaderboard (`/src/screens/LeaderboardScreen.tsx`)
+
+Competitive rankings screen with:
+
+1. **Category Tabs**:
+   - Goals
+   - Assists
+   - Blocks
+   - Games Played
+
+2. **Ranked Player List**:
+   - Top 100 players per category
+   - Medal indicators for top 3 positions (gold, silver, bronze)
+   - Player profile information
+
+3. **Current User Highlight**:
+   - Highlighted row for authenticated user
+   - Display of current rank badge
+   - Easy identification in the list
+
+4. **Time Period Filters**:
+   - Last Week
+   - Last Month
+   - Last Year
+   - All Time
+
+5. **Additional Features**:
+   - Pull-to-refresh functionality
+   - Automatic rank calculation
+   - Real-time leaderboard updates
+
+## Quick Start
+
+### Prerequisites
+
+- Node.js 18+ and npm/yarn
+- Expo CLI
+- Supabase account and project
+
+### Installation
+
+1. **Clone the repository**:
+```bash
+git clone https://github.com/theoapteker/holeguard.git
+cd holeguard
+```
+
+2. **Install dependencies**:
+```bash
+npm install
+# or
+yarn install
+```
+
+3. **Configure environment variables**:
+```bash
+cp .env.example .env
+```
+
+Edit `.env` and add your Supabase credentials:
+```
+EXPO_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+EXPO_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
+```
+
+4. **Set up the database**:
+```bash
+# Login to Supabase
+supabase login
+
+# Link to your project
+supabase link --project-ref your-project-ref
+
+# Apply migrations
+supabase db push
+```
+
+5. **Start the app**:
+```bash
+npm start
+# or
+expo start
+```
+
+6. **Run on device**:
+   - Scan the QR code with Expo Go (Android) or Camera app (iOS)
+   - Or press `a` for Android emulator
+   - Or press `i` for iOS simulator
+
+## Project Structure
+
+```
+holeguard/
+├── App.tsx                          # Main app entry with navigation
+├── src/
+│   ├── components/                  # Reusable UI components
+│   │   ├── SummaryCard.tsx         # Stats summary card component
+│   │   ├── FilterButton.tsx        # Date filter button component
+│   │   ├── GameStatsCard.tsx       # Game statistics card with expand
+│   │   ├── LeaderboardRow.tsx      # Leaderboard entry component
+│   │   └── index.ts                # Component exports
+│   ├── screens/                     # Main app screens
+│   │   ├── StatsScreen.tsx         # Personal stats dashboard
+│   │   ├── LeaderboardScreen.tsx   # Competitive leaderboard
+│   │   └── index.ts                # Screen exports
+│   ├── services/                    # API and data services
+│   │   └── statsService.ts         # Stats fetching logic
+│   ├── navigation/                  # Navigation configuration
+│   │   └── types.ts                # Navigation type definitions
+│   ├── lib/                         # Library configurations
+│   │   └── supabase.ts             # Supabase client setup
+│   ├── utils/                       # Utility functions
+│   │   └── dateFilters.ts          # Date range filtering helpers
+│   └── types/                       # TypeScript type definitions
+│       ├── database.types.ts       # Supabase database types
+│       └── stats.types.ts          # Stats-specific types
+├── supabase/
+│   └── migrations/
+│       └── 20250107000000_initial_schema.sql
+├── package.json
+├── tsconfig.json
+├── app.json
+└── .env.example
+```
 
 ## Database Schema
 
@@ -148,7 +331,41 @@ Automatically updates game status to 'full' when the number of confirmed partici
 - ✅ **UPDATE**: Game creators can update stats; Players can update their own stats
 - ✅ **DELETE**: Game creators can delete stats
 
-## Setup Instructions
+## Getting Started
+
+### Prerequisites
+- Node.js 16+ and npm/yarn
+- Expo CLI: `npm install -g expo-cli`
+- Supabase account and project
+- iOS Simulator (Mac) or Android Emulator
+
+### Installation
+
+**1. Clone and Install**
+```bash
+git clone <repository-url>
+cd holeguard
+npm install
+```
+
+**2. Environment Setup**
+```bash
+cp .env.example .env
+```
+
+Edit `.env` and add your Supabase credentials:
+```
+EXPO_PUBLIC_SUPABASE_URL=your-project-url.supabase.co
+EXPO_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+```
+
+**3. Run the App**
+```bash
+npm start
+# Then press 'i' for iOS or 'a' for Android
+```
+
+## Supabase Setup
 
 ### 1. Initialize Supabase Project
 
@@ -166,7 +383,15 @@ supabase link --project-ref your-project-ref
 supabase init
 ```
 
-### 2. Run Migrations
+### 2. Create Storage Bucket
+
+Create a storage bucket for avatars in your Supabase project:
+- Bucket name: `avatars`
+- Public: Yes
+
+You can do this via the Supabase Dashboard or SQL. See `src/screens/README.md` for storage policies.
+
+### 3. Run Migrations
 
 ```bash
 # Apply migrations to your Supabase project
@@ -176,7 +401,7 @@ supabase db push
 supabase db reset
 ```
 
-### 3. Generate TypeScript Types (Optional)
+### 4. Generate TypeScript Types (Optional)
 
 The types are already included in `src/types/database.types.ts`, but you can regenerate them:
 
@@ -268,8 +493,39 @@ const { data: stats, error } = await supabase
   .single();
 ```
 
-## Features
+## Technologies Used
 
+### Frontend
+- **React Native** - Cross-platform mobile framework
+- **Expo** - Development platform and build tool
+- **TypeScript** - Type-safe JavaScript
+- **React Navigation** - Routing and navigation
+- **react-native-chart-kit** - Data visualization
+- **react-native-svg** - SVG rendering for charts
+
+### Backend
+- **Supabase** - Backend as a Service
+- **PostgreSQL** - Relational database
+- **Row Level Security (RLS)** - Data protection
+
+### Key Features
+
+### App Features
+- ✅ **Profile Setup Screen** - Complete onboarding flow after signup
+  - Position selection (Goalie, Center, Driver, Wing)
+  - Skill level (Beginner, Intermediate, Advanced, Pro)
+  - Location input
+  - Bio (optional, max 200 chars)
+  - Avatar upload to Supabase Storage
+  - Form validation
+  - Skip option
+- 🚧 Auth screens (coming soon)
+- 🚧 Main app navigation (coming soon)
+- 🚧 Game browsing and creation (coming soon)
+
+### Backend Features
+- ✅ Personal stats dashboard with charts
+- ✅ Competitive leaderboards across multiple categories
 - ✅ User profiles with positions and skill levels
 - ✅ Game creation and management
 - ✅ Player participation tracking
@@ -281,17 +537,95 @@ const { data: stats, error } = await supabase
 - ✅ Automatic timestamp management
 - ✅ Comprehensive TypeScript types
 
+See [src/screens/README.md](src/screens/README.md) for detailed ProfileSetupScreen documentation.
+
 ## File Structure
 
 ```
 holeguard/
+├── src/
+│   ├── lib/
+│   │   └── supabase.ts              # Supabase client configuration
+│   ├── screens/
+│   │   ├── ProfileSetupScreen.tsx   # Profile setup after signup
+│   │   └── README.md                # Screen documentation
+│   ├── theme/
+│   │   └── colors.ts                # App color palette
+│   └── types/
+│       └── database.types.ts        # TypeScript database types
 ├── supabase/
 │   └── migrations/
 │       └── 20250107000000_initial_schema.sql
+├── App.tsx                          # Main app entry point
+├── app.json                         # Expo configuration
+├── package.json                     # Dependencies
+├── .env.example                     # Environment variables template
 ├── src/
-│   └── types/
-│       └── database.types.ts
+│   ├── screens/
+│   │   └── GameDetailScreen.tsx
+│   ├── components/
+│   │   ├── PlayerAvatar.tsx
+│   │   ├── PlayerCard.tsx
+│   │   ├── SkillBadge.tsx
+│   │   ├── StatusBadge.tsx
+│   │   └── index.ts
+│   ├── hooks/
+│   │   └── useGameDetails.ts
+│   ├── services/
+│   │   └── gameService.ts
+│   ├── types/
+│   │   ├── database.types.ts
+│   │   ├── game.types.ts
+│   │   └── navigation.types.ts
+│   └── utils/
+│       └── formatters.ts
+├── GAME_DETAIL_SCREEN.md
 └── README.md
+```
+- ✅ Pull-to-refresh functionality
+- ✅ Date range filtering
+
+## React Native App
+
+### Screens
+
+#### GameDetailScreen
+A comprehensive game detail view that displays all information about a water polo game.
+
+**Features:**
+- Game title, status, and skill level badges
+- Host information with avatar
+- Full description
+- Interactive map with pool location
+- Date & time (prominent display)
+- Player list with avatars
+- Player capacity indicator
+- Action buttons (Join, Leave, Cancel, Start, Share)
+- Real-time updates
+- Navigate to player profiles
+- Get directions to pool
+
+See [GAME_DETAIL_SCREEN.md](./GAME_DETAIL_SCREEN.md) for detailed documentation.
+
+### Components
+
+- **PlayerAvatar** - Displays user avatar or initials fallback
+- **PlayerCard** - Player information card with avatar and skill level
+- **SkillBadge** - Colored badge for skill levels
+- **StatusBadge** - Colored badge for game status
+
+### Hooks
+
+- **useGameDetails** - Custom hook for game data fetching and actions
+
+### Services
+
+- **GameService** - API service layer for game operations
+
+### Dependencies
+
+```bash
+npm install react-native-maps @react-navigation/native @react-navigation/stack
 ```
 
 ## Future Enhancements
