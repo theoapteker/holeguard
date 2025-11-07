@@ -13,4 +13,21 @@
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
   ]
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "jsx": "react-native",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "target": "esnext",
+    "lib": ["esnext"],
+    "allowSyntheticDefaultImports": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"],
+  "exclude": ["node_modules"]
 }

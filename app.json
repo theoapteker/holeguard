@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "HoleGuard",
+    "name": "WaterPolo Connect",
     "slug": "holeguard",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -14,6 +15,11 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.holeguard.app"
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
@@ -33,5 +39,10 @@
         }
       ]
     ]
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
   }
 }
