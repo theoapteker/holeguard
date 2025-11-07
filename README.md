@@ -1,10 +1,14 @@
-# WaterPolo Connect - Database Schema
+# WaterPolo Connect (HoleGuard)
 
-This repository contains the Supabase database schema for the WaterPolo Connect application.
+A React Native mobile application that helps water polo players find and organize pickup games in their area.
 
 ## Overview
 
-WaterPolo Connect is a platform that helps water polo players find and organize pickup games in their area. The database schema supports user profiles, game creation, participant management, and player statistics tracking.
+WaterPolo Connect is a platform that helps water polo players find and organize pickup games in their area. The application includes:
+
+- **Mobile App** - React Native frontend for iOS and Android
+- **Backend** - Supabase database with real-time capabilities
+- **Features** - User profiles, game creation, participant management, and player statistics tracking
 
 ## Database Schema
 
@@ -289,9 +293,69 @@ holeguard/
 │   └── migrations/
 │       └── 20250107000000_initial_schema.sql
 ├── src/
-│   └── types/
-│       └── database.types.ts
+│   ├── screens/
+│   │   └── GameDetailScreen.tsx
+│   ├── components/
+│   │   ├── PlayerAvatar.tsx
+│   │   ├── PlayerCard.tsx
+│   │   ├── SkillBadge.tsx
+│   │   ├── StatusBadge.tsx
+│   │   └── index.ts
+│   ├── hooks/
+│   │   └── useGameDetails.ts
+│   ├── services/
+│   │   └── gameService.ts
+│   ├── types/
+│   │   ├── database.types.ts
+│   │   ├── game.types.ts
+│   │   └── navigation.types.ts
+│   └── utils/
+│       └── formatters.ts
+├── GAME_DETAIL_SCREEN.md
 └── README.md
+```
+
+## React Native App
+
+### Screens
+
+#### GameDetailScreen
+A comprehensive game detail view that displays all information about a water polo game.
+
+**Features:**
+- Game title, status, and skill level badges
+- Host information with avatar
+- Full description
+- Interactive map with pool location
+- Date & time (prominent display)
+- Player list with avatars
+- Player capacity indicator
+- Action buttons (Join, Leave, Cancel, Start, Share)
+- Real-time updates
+- Navigate to player profiles
+- Get directions to pool
+
+See [GAME_DETAIL_SCREEN.md](./GAME_DETAIL_SCREEN.md) for detailed documentation.
+
+### Components
+
+- **PlayerAvatar** - Displays user avatar or initials fallback
+- **PlayerCard** - Player information card with avatar and skill level
+- **SkillBadge** - Colored badge for skill levels
+- **StatusBadge** - Colored badge for game status
+
+### Hooks
+
+- **useGameDetails** - Custom hook for game data fetching and actions
+
+### Services
+
+- **GameService** - API service layer for game operations
+
+### Dependencies
+
+```bash
+npm install react-native-maps @react-navigation/native @react-navigation/stack
 ```
 
 ## Future Enhancements
